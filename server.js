@@ -10,7 +10,7 @@ module.exports = server
 
 server.engine('hbs', hbs({ extname: 'hbs'}))
 server.set('view engine', 'hbs')
-// server.use(express.urlencoded({ extended: true }))
+server.use(express.urlencoded({ extended: true }))
 
 // Routes
 
