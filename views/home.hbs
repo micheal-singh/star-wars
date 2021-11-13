@@ -1,24 +1,24 @@
 <h1>Welcome to the home page</h1>
 <ul>
 {{#each forceUsers}}
-  <li><a href="/mains/{{id}}">{{name}} 
-  {{homeWorld}} 
+  <li>
+    <a href="/{{id}}">{{name}}</a> 
   {{#if jedi}}
-  <h1>jedi</h1>
+    <h4>jedi</h4>
   {{else}}
-
+  
   {{/if}} 
   
   {{#if sith}}
-  <h1>sith</h1>
+  <h4>sith</h4>
   {{else}}
 
   {{/if}}  
   
   {{#if neutral}}
-  <h1>neutral</h1>
+  <h4>neutral</h4>
   {{else}}
 
-  {{/if}} </a> <a href='/mains/delete/{{id}}'>Delete</a></li>
+  {{/if}}
 {{/each}}
 </ul>

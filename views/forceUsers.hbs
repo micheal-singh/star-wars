@@ -1,0 +1,10 @@
+<h1>Welcome to the home page</h1>
+<ul>
+{{#each forceUsers}}
+  <li><a href="/{{id}}">{{name}}</a>
+  {{homeWorld}} 
+ <a href='/mains/delete/{{id}}'>Delete</a></li>
+{{/each}}
+</ul>
+
+{{>create}}
