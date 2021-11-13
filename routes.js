@@ -11,6 +11,18 @@ router.get('/', (req, res) => {
   db.getforceUsers()
   .then(forceUsers => {
     res.render('home', { forceUsers: forceUsers })
+    return null
   })
+  .catch(e => (console.log(e)))
 })
+
+router.get('/jedis/', (req, res) => {
+  db.getJedis()
+  .then(forceUsers => {
+    res.render('jediHome', { forceUsers: forceUsers })
+    return null
+  })
+  .catch(e => (console.log(e)))
+})
+
 module.exports = router
