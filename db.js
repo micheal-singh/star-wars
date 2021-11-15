@@ -7,7 +7,8 @@ module.exports = {
   getJedis: getJedis,
   getSiths: getSiths,
   getNeutrals: getNeutrals,
-  getforceUser: getforceUser
+  getforceUser: getforceUser,
+  getAddForceUser: getAddForceUser
 }
 
 // All force users
@@ -44,3 +45,13 @@ function getforceUser (id, db = connection) {
   .where('forceUsers.id', id)
   .first()
 }
+
+// new force user
+function getAddForceUser (data, db = connection) {
+  const { name, homeWorld, jedi, sith, neutral} = data
+  return db('forceUsers')
+  .insert({ name, homeWorld, jedi, sith, neutral })
+  .then(([newId]) => {
+    return getforceUser(newId)
+  })
+} 

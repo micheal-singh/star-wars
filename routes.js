@@ -69,4 +69,17 @@ router.get('/:id', (req, res) => {
   })
 })
 
+// add force user
+router.post('/', (req, res) => {
+  const { name, homeWorld, jedi, sith, neutral} = req.body
+  db.getAddForceUser({name, homeWorld, jedi, sith, neutral})
+  .then(forceUsers => {
+    res.render('character', forceUsers)
+    return null
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).send(error)
+  })
+})
 module.exports = router
