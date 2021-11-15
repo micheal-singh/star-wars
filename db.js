@@ -8,7 +8,8 @@ module.exports = {
   getSiths: getSiths,
   getNeutrals: getNeutrals,
   getforceUser: getforceUser,
-  getAddForceUser: getAddForceUser
+  getAddForceUser: getAddForceUser,
+  deleteForceUser: deleteForceUser
 }
 
 // All force users
@@ -55,3 +56,10 @@ function getAddForceUser (data, db = connection) {
     return getforceUser(newId)
   })
 } 
+
+// delete forceUser
+function deleteForceUser (id, db = connection) {
+  return db('forceUsers')
+  .where({ id: id })
+  .delete()
+}

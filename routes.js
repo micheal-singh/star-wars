@@ -71,7 +71,21 @@ router.get('/:id', (req, res) => {
 
 // add force user
 router.post('/', (req, res) => {
-  const { name, homeWorld, jedi, sith, neutral} = req.body
+  let { name, homeWorld, jedi, sith, neutral, random} = req.body
+  const randomNumber = Math.floor(Math.random() * 4)
+  if (random === '1') {
+    if (randomNumber === 0) {
+      jedi = '1'
+    }
+    else if (randomNumber === 1) {
+      sith = '1'
+    }else if (randomNumber === 2) {
+      neutral = '1'
+    } else if (randomNumber === 3) {
+      jedi = '1'
+      sith = '1'
+    }
+  } 
   db.getAddForceUser({name, homeWorld, jedi, sith, neutral})
   .then(forceUsers => {
     res.render('character', forceUsers)
@@ -81,5 +95,10 @@ router.post('/', (req, res) => {
     console.log(err)
     res.status(500).send(error)
   })
+})
+
+// delete force user
+router.get('/delete/:id', (req, res) => {
+  db.deleteForceUser
 })
 module.exports = router
